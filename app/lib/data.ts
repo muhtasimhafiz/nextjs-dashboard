@@ -15,6 +15,12 @@ export async function fetchRevenue() {
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
 
   try {
+    // Check database connection
+    // console.log('Checking database connection...');
+    // const testConnection = await sql`SELECT 1`;  // Simple query to test connectivity
+    // if (testConnection.command !== 'SELECT') {
+    //   throw new Error('Failed to connect to the database');
+    // }
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
@@ -22,7 +28,6 @@ export async function fetchRevenue() {
     // await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
-
     // console.log('Data fetch completed after 3 seconds.');
 
     return data.rows;
